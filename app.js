@@ -1,7 +1,8 @@
-import express from 'express'
-import dotenv from 'dotenv'
+import express from 'express';
+import dotenv from 'dotenv';
 import authRoutes from './routes/auth.js';
-import habitRoutes from './routes/habits.js'
+import habitRoutes from './routes/habits.js';
+import checkinRoutes from './routes/checkin.js';
 import verifyToken from './middleware/authMiddleware.js';
 dotenv.config();
 
@@ -30,6 +31,8 @@ app.get("/check",verifyToken,(req,res)=>{
 app.use("/api/auth",authRoutes);
 //Habit Routes
 app.use("/api/habits",habitRoutes);
+//Checkin Routes
+app.use("/api/checkin",checkinRoutes);
 
 
 app.listen(PORT,()=>{
