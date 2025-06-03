@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import authRoutes from './routes/auth.js';
 import habitRoutes from './routes/habits.js';
 import checkinRoutes from './routes/checkin.js';
+import reminderRoutes from './routes/reminders.js'
 import verifyToken from './middleware/authMiddleware.js';
 dotenv.config();
 
@@ -33,6 +34,8 @@ app.use("/api/auth",authRoutes);
 app.use("/api/habits",habitRoutes);
 //Checkin Routes
 app.use("/api/checkin",checkinRoutes);
+//Remiander Routes
+app.use("/api/reminder",reminderRoutes);
 
 
 app.listen(PORT,()=>{
