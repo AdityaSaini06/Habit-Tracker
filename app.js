@@ -1,5 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import cors from 'cors';
 import authRoutes from './routes/auth.js';
 import habitRoutes from './routes/habits.js';
 import checkinRoutes from './routes/checkin.js';
@@ -9,6 +10,7 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+app.use(cors());
 app.use(express.json());
 
 //test route 
@@ -22,10 +24,10 @@ app.get("/check",verifyToken,(req,res)=>{
 })
 
 //global error handler 
-// app.use((err,req,res,next)=>{
-//   console.error(err.stack);
-//   res.send(500).json({error:"Something went wrong"})
-// })
+app.use((err,req,res,next)=>{
+  console.error(err.stack);
+  res.send(500).json({error:"Something went wrong"})
+})
 
 
 //Auth Routes
